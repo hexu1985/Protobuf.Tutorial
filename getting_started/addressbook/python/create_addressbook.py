@@ -3,7 +3,7 @@
 from py_proto import addressbook_pb2
 import sys
 
-def CreatePerson():
+def NewPerson():
     person = addressbook_pb2.Person()
     person.id = 1234
     person.name = "John Doe"
@@ -14,8 +14,8 @@ def CreatePerson():
     return person
 
 # This function fills in a Person message based on user input.
-def AddForAddress(address_book, person):
-    address_book.people.add().CopyFrom(person)
+def AddForAddress(person):
+    person.CopyFrom(NewPerson())
 
 # Main procedure:  Reads the entire address book from a file,
 #   adds one person based on user input, then writes it back out to the same
@@ -27,7 +27,7 @@ if len(sys.argv) != 2:
 address_book = addressbook_pb2.AddressBook()
 
 # Add an address.
-AddForAddress(address_book, CreatePerson())
+AddForAddress(address_book.people.add())
 
 # Write the new address book back to disk.
 with open(sys.argv[1], "wb") as f:
