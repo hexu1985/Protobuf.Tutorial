@@ -1,4 +1,4 @@
-### protobuf的wire类型之Varint
+### Base 128 Varint编码
 
 **Varint 是什么？**
 
@@ -57,3 +57,16 @@ i32的值为 300
 |__ ac 02              //十六进制
 ```
 ![number_300_varint](number_300_varint.png)
+
+我们可以通过示例程序验证一把:
+```
+$ cd cxx
+$ ./build_proto.sh
+$ make
+$ ./test
+==== test_1 ====:
+08 ac 02
+$ python3 base_128_varint_encode.py 300
+['10101100', '00000010']
+ac 02 
+```
