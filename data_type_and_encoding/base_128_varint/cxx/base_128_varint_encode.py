@@ -1,7 +1,10 @@
 import sys
 
+def intToBin32(i):
+    return bin(((1 << 32) - 1) & i)[2:]
+
 def base_128_varint_encode(istr):
-    bits=bin(int(istr,10))[2:]
+    bits=intToBin32(int(istr))
     bits_list=[]
     while len(bits) > 7:
         bits_list.append('1'+bits[-7:])
