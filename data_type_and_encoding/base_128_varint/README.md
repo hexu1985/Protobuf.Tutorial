@@ -66,7 +66,8 @@ $ make
 $ ./test
 ==== test_1 ====:
 08 ac 02
+$ cd ..
 $ python3 base_128_varint_encode.py 300
-['10101100', '00000010']
-ac 02 
+bits list:  ['00000010', '10101100']
+little endian in memory: ac 02
 ```

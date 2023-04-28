@@ -12,7 +12,8 @@ def base_128_varint_encode(istr):
         bits_list.append('1'+bits[-7:])
         bits=bits[:-7]
     bits_list.append((8-len(bits))*'0'+bits) 
-    return bits_list
+    bits_list.reverse()
+    return bits_list    # big endian
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -21,7 +22,8 @@ if __name__ == "__main__":
         sys.exit(1)
 
     bits_list = base_128_varint_encode(sys.argv[1])
-    print(bits_list)
-    for bits in bits_list:
+    print("bits list: ", bits_list)
+    print("little endian in memory: ", end="")
+    for bits in reversed(bits_list): # little endian
         print("{:02x}".format(int(bits, 2)), end=" ")
     print()
