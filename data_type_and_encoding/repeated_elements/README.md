@@ -1,4 +1,4 @@
-### repeated编码
+### repeated类型
 
 repeated 顾名思义，是重复这个字段，其主要是补充数组功能这块的空白，类似于 C++ 语言中的 vector。
 
