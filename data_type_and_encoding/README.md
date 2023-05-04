@@ -5,4 +5,6 @@
 - [ZigZag编码](zig_zag)
 - [Lenght-delimited编码](length_delimited)
 - [Non-varint编码数字类型](non_varint_numbers)
+- [repeated编码](repeated_elements)
+- [submessage编码](submessages)
 
