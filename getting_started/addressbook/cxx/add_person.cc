@@ -81,6 +81,7 @@ int main(int argc, char* argv[]) {
     {
         // Write the new address book back to disk.
         fstream output(argv[1], ios::out | ios::trunc | ios::binary);
+        cout << "output size: " << address_book.ByteSize() << endl;
         if (!address_book.SerializeToOstream(&output)) {
             cerr << "Failed to write address book." << endl;
             return -1;
