@@ -1,4 +1,4 @@
-## protobuf tutorial
+## protobuf概述
 
 ### 1 protobuf 简介
 
@@ -10,7 +10,22 @@ protobuf (protocol buffer) 是谷歌内部的混合语言数据标准。通过�
 - 定义了一种源文件，扩展名为 .proto(类比.cpp文件)，使用这种源文件，可以定义存储类的内容
 - protobuf有自己的编译器 protoc，可以将 .proto 编译成.cc文件，使之成为一个可以在 C++ 工程中直接使用的类
 
-### 2 定义proto文件
+### 2 快速安装protobuf开放环境
+
+ubuntu环境下可以通过apt安装protobuf，安装的版本无法进行指定
+
+```
+$ sudo apt update
+$ sudo apt install libprotobuf-dev protobuf-compiler
+```
+
+检查是否安装成功。
+
+```
+$ protoc --version
+```
+
+### 3 定义proto文件
 
 **message 介绍**
 
@@ -107,7 +122,7 @@ message AddressBook {
     返回当前解析信息时遇到的未知字段的集合的一个mutale指针。
     ```
 
-### 3 编译proto文件
+### 4 编译proto文件
 
 可以执行以下protoc命令对.proto文件进行编译，生成对应的c文件。Linux系统通过 help protoc 查看protoc命令的使用详解。
 ```
@@ -209,12 +224,12 @@ repeated 字段也有一些特殊的方法 - 如果你看一下 repeated phones 
 - `bool SerializeToOstream(ostream* output) const;`: 将 message 写入给定的 C++ 的 ostream
 - `bool ParseFromIstream(istream* input);`: 解析给定 C++ istream 到 message
 
-### 4 protobuf程序示例
+### 5 protobuf程序示例
 
 - 写入一个 Message: 参考[add_person.cc](cxx/add_person.cc)和[create_addressbook.cc](cxx/create_addressbook.cc)
 - 读取一个 Message: 参考[add_person.cc](cxx/add_person.cc)和[list_people.cc](cxx/list_people.cc)
 
-### 5 扩展一个 Protocol Buffer
+### 6 扩展一个 Protocol Buffer
 
 在发布使用 protocol buffer 的代码之后，无疑早晚有一天你将会想要 “改进” protocol buffer 的定义。  
 如果你希望你的新 buffer 向后兼容，并且你的旧 buffer 是向前兼容的（实际上你一定想要这种兼容性） - 那么你需要遵循一些规则。  
@@ -229,5 +244,4 @@ repeated 字段也有一些特殊的方法 - 如果你看一下 repeated phones 
 或者在字段编号后面使用 [default = value] 在 .proto 文件中提供合理的默认值。如果未为 optional 元素指定默认值，则使用特定于类型的默认值：  
 对于字符串，默认值为空字符串。对于布尔值，默认值为 false。对于数字类型，默认值为零。另请注意，如果添加了新的 repeated 字段，  
 则新代码将无法判断它是否为空（通过新代码）或从未设置（通过旧代码），因为它没有 has_ 标志。
-
 
