@@ -15,4 +15,5 @@
 - [repeated类型](data_type_and_encoding/repeated_elements)
 - [嵌套子类型](data_type_and_encoding/submessages)
 - [map类型](data_type_and_encoding/map_elements)
-- [any类型](data_type_and_encoding/data_type_any)
+- [any类型](data_type_and_encoding/any)
+- [one_of类型](data_type_and_encoding/one_of)
