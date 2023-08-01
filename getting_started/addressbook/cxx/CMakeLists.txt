@@ -19,5 +19,5 @@ target_link_libraries(add_person protobuf::libprotobuf)
 add_executable(create_addressbook create_addressbook.cc cxx_proto/addressbook.pb.cc)
 target_link_libraries(create_addressbook protobuf::libprotobuf)
 
-add_executable(print_addressbook print_addressbook.cc cxx_proto/addressbook.pb.cc)
-target_link_libraries(print_addressbook protobuf::libprotobuf)
+add_executable(print_to_string print_to_string.cc cxx_proto/addressbook.pb.cc)
+target_link_libraries(print_to_string protobuf::libprotobuf)
