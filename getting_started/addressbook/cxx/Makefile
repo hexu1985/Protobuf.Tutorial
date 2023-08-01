@@ -5,7 +5,7 @@ LDFLAGS =
 LDLIBS = -lprotobuf
 VPATH = cxx_proto
 
-PROGS =	list_people add_person create_addressbook print_to_string
+PROGS =	list_people add_person create_addressbook print_to_string message_to_json_string
 
 .PHONY: all
 all: $(PROGS)
@@ -28,5 +28,8 @@ create_addressbook: create_addressbook.o addressbook.pb.o
 	$(CXX) -o $@ $^ $(LDFLAGS) $(LDLIBS)
 
 print_to_string: print_to_string.o addressbook.pb.o
+	$(CXX) -o $@ $^ $(LDFLAGS) $(LDLIBS)
+
+message_to_json_string: message_to_json_string.o addressbook.pb.o
 	$(CXX) -o $@ $^ $(LDFLAGS) $(LDLIBS)
 

@@ -21,3 +21,6 @@ target_link_libraries(create_addressbook protobuf::libprotobuf)
 
 add_executable(print_to_string print_to_string.cc cxx_proto/addressbook.pb.cc)
 target_link_libraries(print_to_string protobuf::libprotobuf)
+
+add_executable(message_to_json_string message_to_json_string.cc cxx_proto/addressbook.pb.cc)
+target_link_libraries(message_to_json_string protobuf::libprotobuf)
