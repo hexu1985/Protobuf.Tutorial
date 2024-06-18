@@ -1,9 +1,9 @@
 CXX = g++
 CXXFLAGS = -g3 -Wall -Wextra
-INCLUDES = -Icxx_proto
+INCLUDES = -Igenerated
 LDFLAGS = 
 LDLIBS = -lprotobuf
-VPATH = cxx_proto
+VPATH = generated
 
 PROGS =	list_people add_person create_addressbook print_to_string message_to_json_string
 
