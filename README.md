@@ -17,3 +17,16 @@
 - [map类型](data_type_and_encoding/map_elements)
 - [any类型](data_type_and_encoding/any)
 - [one_of类型](data_type_and_encoding/one_of)
+
+
+### 参考资料：
+
+- 项目链接 https://github.com/google/protobuf
+
+- pythontutorial https://developers.google.com/protocol-buffers/docs/pythontutorial
+
+- python-generated https://developers.google.com/protocol-buffers/docs/reference/python-generated#extension
+
+- 语言指南 https://developers.google.com/protocol-buffers/docs/proto3
+
+- API文档 https://developers.google.com/protocol-buffers/docs/reference/python/?hl=zh-cn
