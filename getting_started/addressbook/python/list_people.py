@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from py_proto import addressbook_pb2
+from generated import addressbook_pb2
 import sys
 
 # Iterates though all people in the AddressBook and prints info about them.

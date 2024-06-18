@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from py_proto import addressbook_pb2
+from generated import addressbook_pb2
 import sys
 
 # This function fills in a Person message based on user input.
