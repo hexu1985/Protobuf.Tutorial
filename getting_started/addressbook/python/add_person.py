@@ -22,11 +22,11 @@ def PromptForAddress(person):
 
         phone_type = input("Is this a mobile, home, or work phone? ")
         if phone_type == "mobile":
-            phone_number.type = addressbook_pb2.Person.PhoneType.MOBILE
+            phone_number.type = addressbook_pb2.Person.MOBILE
         elif phone_type == "home":
-            phone_number.type = addressbook_pb2.Person.PhoneType.HOME
+            phone_number.type = addressbook_pb2.Person.HOME
         elif phone_type == "work":
-            phone_number.type = addressbook_pb2.Person.PhoneType.WORK
+            phone_number.type = addressbook_pb2.Person.WORK
         else:
             print("Unknown phone type; leaving as default value.")
 

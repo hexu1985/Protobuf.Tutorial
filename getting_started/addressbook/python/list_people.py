@@ -12,11 +12,11 @@ def ListPeople(address_book):
             print("  E-mail address:", person.email)
 
         for phone_number in person.phones:
-            if phone_number.type == addressbook_pb2.Person.PhoneType.MOBILE:
+            if phone_number.type == addressbook_pb2.Person.MOBILE:
                 print("  Mobile phone #: ", end="")
-            elif phone_number.type == addressbook_pb2.Person.PhoneType.HOME:
+            elif phone_number.type == addressbook_pb2.Person.HOME:
                 print("  Home phone #: ", end="")
-            elif phone_number.type == addressbook_pb2.Person.PhoneType.WORK:
+            elif phone_number.type == addressbook_pb2.Person.WORK:
                 print("  Work phone #: ", end="")
             print(phone_number.number)
 
