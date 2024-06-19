@@ -1,6 +1,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <iostream>
+#include <fstream>
 #include <string>
 
 #include "google/protobuf/io/zero_copy_stream_impl.h"
@@ -8,22 +9,16 @@
 
 #include "addressbook.pb.h"
 
-using google::protobuf::TextFormat;
-using google::protobuf::io::FileOutputStream;
-using google::protobuf::io::ZeroCopyOutputStream;
 using namespace std;
 
-bool WriteToTextFile(const google::protobuf::Message &message, const std::string &file_name) {
-    int fd = open(file_name.c_str(), O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
-    if (fd < 0) {
+bool WriteToBinaryFile(const google::protobuf::Message &message, const std::string &file_name) {
+    std::fstream output(file_name,
+            std::ios::out | std::ios::trunc | std::ios::binary);
+    if (!output) {
         std::cerr << "Unable to open file " << file_name << " to write.\n";
         return false;
     }
-    ZeroCopyOutputStream *output = new FileOutputStream(fd);
-    bool success = TextFormat::Print(message, output);
-    delete output;
-    close(fd);
-    return success;
+    return message.SerializeToOstream(&output);
 }
 
 std::shared_ptr<tutorial::AddressBook> CreateAddressBook() {
@@ -56,7 +51,7 @@ int main(int argc, char* argv[]) {
     auto address_book = CreateAddressBook();
 
     // Write the new address book back to disk.
-    if (!WriteToTextFile(*address_book, argv[1])) {
+    if (!WriteToBinaryFile(*address_book, argv[1])) {
         cerr << "Failed to write address book." << endl;
         return -1;
     }
@@ -66,5 +61,6 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
+
 
 

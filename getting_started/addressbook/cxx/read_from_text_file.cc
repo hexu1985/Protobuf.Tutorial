@@ -13,6 +13,25 @@ using google::protobuf::io::FileInputStream;
 using google::protobuf::io::ZeroCopyInputStream;
 using namespace std;
 
+bool ReadFromTextFile(const std::string &file_name,
+        google::protobuf::Message *message) {
+    int fd = open(file_name.c_str(), O_RDONLY);
+    if (fd < 0) {
+        std::cerr << "Failed to open file " << file_name << " in text mode.\n";
+        // Failed to open;
+        return false;
+    }
+
+    ZeroCopyInputStream *input = new FileInputStream(fd);
+    bool success = TextFormat::Parse(input, message);
+    if (!success) {
+        std::cerr << "Failed to parse file " << file_name << " as text proto.\n";
+    }
+    delete input;
+    close(fd);
+    return success;
+}
+
 void ListPeople(const tutorial::AddressBook& address_book) {
     for (int i = 0; i < address_book.people_size(); i++) {
         const tutorial::Person& person = address_book.people(i);
@@ -40,25 +59,6 @@ void ListPeople(const tutorial::AddressBook& address_book) {
             cout << phone_number.number() << endl;
         }
     }
-}
-
-bool ReadFromTextFile(const std::string &file_name,
-        google::protobuf::Message *message) {
-    int fd = open(file_name.c_str(), O_RDONLY);
-    if (fd < 0) {
-        std::cerr << "Failed to open file " << file_name << " in text mode.";
-        // Failed to open;
-        return false;
-    }
-
-    ZeroCopyInputStream *input = new FileInputStream(fd);
-    bool success = TextFormat::Parse(input, message);
-    if (!success) {
-        std::cerr << "Failed to parse file " << file_name << " as text proto.";
-    }
-    delete input;
-    close(fd);
-    return success;
 }
 
 // Main function:  Reads the entire address book from a file and prints all

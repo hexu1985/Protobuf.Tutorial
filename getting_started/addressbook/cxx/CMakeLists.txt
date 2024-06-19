@@ -27,3 +27,6 @@ target_link_libraries(message_to_json_string protobuf::libprotobuf)
 
 add_executable(write_to_text_file write_to_text_file.cc generated/addressbook.pb.cc)
 target_link_libraries(write_to_text_file protobuf::libprotobuf)
+
+add_executable(read_from_text_file read_from_text_file.cc generated/addressbook.pb.cc)
+target_link_libraries(read_from_text_file protobuf::libprotobuf)
