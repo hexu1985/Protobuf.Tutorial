@@ -2,18 +2,31 @@
 #include <fstream>
 #include <string>
 
+#include "google/protobuf/util/json_util.h"
+
 #include "addressbook.pb.h"
 
 using namespace std;
+using google::protobuf::util::MessageToJsonString;
 
-bool WriteToBinaryFile(const google::protobuf::Message &message, const std::string &file_name) {
-    std::fstream output(file_name,
-            std::ios::out | std::ios::trunc | std::ios::binary);
-    if (!output) {
-        std::cerr << "Unable to open file " << file_name << " to write.\n";
+bool WriteToJsonFile(const google::protobuf::Message &message, const std::string &file_name) {
+    google::protobuf::util::JsonPrintOptions options;
+
+    std::string json_string;
+    auto status = MessageToJsonString(message, &json_string, options);
+    if (!status.ok()) {
+        std::cerr << "Cannot convert proto to json:" << message.DebugString() << "\n";
         return false;
     }
-    return message.SerializeToOstream(&output);
+
+    std::ofstream output(file_name, std::ofstream::out | std::ofstream::trunc);
+    if (!output) {
+        std::cerr << "open file: " << file_name << " for write failed!\n";
+        return false;
+    }
+    output << json_string;
+
+    return true;
 }
 
 std::shared_ptr<tutorial::AddressBook> CreateAddressBook() {
@@ -46,7 +59,7 @@ int main(int argc, char* argv[]) {
     auto address_book = CreateAddressBook();
 
     // Write the new address book back to disk.
-    if (!WriteToBinaryFile(*address_book, argv[1])) {
+    if (!WriteToJsonFile(*address_book, argv[1])) {
         cerr << "Failed to write address book." << endl;
         return -1;
     }
@@ -56,6 +69,7 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
+
 
 
 

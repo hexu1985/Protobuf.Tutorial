@@ -30,3 +30,15 @@ target_link_libraries(write_to_text_file protobuf::libprotobuf)
 
 add_executable(read_from_text_file read_from_text_file.cc generated/addressbook.pb.cc)
 target_link_libraries(read_from_text_file protobuf::libprotobuf)
+
+add_executable(write_to_binary_file write_to_binary_file.cc generated/addressbook.pb.cc)
+target_link_libraries(write_to_binary_file protobuf::libprotobuf)
+
+add_executable(read_from_binary_file read_from_binary_file.cc generated/addressbook.pb.cc)
+target_link_libraries(read_from_binary_file protobuf::libprotobuf)
+
+add_executable(write_to_json_file write_to_json_file.cc generated/addressbook.pb.cc)
+target_link_libraries(write_to_json_file protobuf::libprotobuf)
+
+add_executable(read_from_json_file read_from_json_file.cc generated/addressbook.pb.cc)
+target_link_libraries(read_from_json_file protobuf::libprotobuf)
