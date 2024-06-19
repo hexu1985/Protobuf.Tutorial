@@ -6,7 +6,7 @@ LDLIBS = -lprotobuf
 VPATH = generated
 
 PROGS =	list_people add_person create_addressbook print_to_string message_to_json_string \
-		write_to_text_file
+		write_to_text_file read_from_text_file
 
 .PHONY: all
 all: $(PROGS)
@@ -35,5 +35,8 @@ message_to_json_string: message_to_json_string.o addressbook.pb.o
 	$(CXX) -o $@ $^ $(LDFLAGS) $(LDLIBS)
 
 write_to_text_file: write_to_text_file.o addressbook.pb.o
+	$(CXX) -o $@ $^ $(LDFLAGS) $(LDLIBS)
+
+read_from_text_file: read_from_text_file.o addressbook.pb.o
 	$(CXX) -o $@ $^ $(LDFLAGS) $(LDLIBS)
 

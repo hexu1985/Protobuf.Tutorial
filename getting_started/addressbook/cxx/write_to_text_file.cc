@@ -1,7 +1,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <iostream>
-#include <fstream>
 #include <string>
 
 #include "google/protobuf/io/zero_copy_stream_impl.h"
