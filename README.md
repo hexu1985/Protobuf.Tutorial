@@ -30,3 +30,5 @@
 - 语言指南 https://developers.google.com/protocol-buffers/docs/proto3
 
 - API文档 https://protobuf.com.cn/
+
+- API文档 https://alovn.cn/docs/protobuf/
