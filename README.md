@@ -33,4 +33,6 @@
 
 - API文档 https://alovn.cn/docs/protobuf/
 
-- gRPC 官方文档中文版 https://doc.oschina.net/grpc
+- Protobuf API文档 https://developers.google.com/protocol-buffers/docs/reference/python/?hl=zh-cn
+
+- gRPC官方文档中文版 https://doc.oschina.net/grpc
