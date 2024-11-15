@@ -19,6 +19,21 @@
 - [one_of类型](data_type_and_encoding/one_of)
 
 
+### 快速安装protobuf开放环境
+
+ubuntu环境下可以通过apt安装protobuf，安装的版本无法进行指定
+
+```
+$ sudo apt update
+$ sudo apt install libprotobuf-dev protobuf-compiler
+```
+
+检查是否安装成功。
+
+```
+$ protoc --version
+```
+
 ### 参考资料：
 
 - 项目链接 https://github.com/google/protobuf
